@@ -5,10 +5,7 @@ if [[ $1 == "" || $2 == "" ]]; then
 	exit 1
 fi
 
-column=$1
-file=$2
-
-awk -F',' -v col="$1" '
+awk -F ',' -v col="$1" '
     NR > 1 && $col != "" {
         sum += $col
         count++
@@ -19,5 +16,5 @@ awk -F',' -v col="$1" '
         else 
             exit 1
     }
-' "${file:-/dev/stdin}"
+' "${2:-/dev/stdin}"
 
